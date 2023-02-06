@@ -11,4 +11,8 @@ class MainController extends Controller
         $people=Person::all();
         return view('pages.home', compact('people'));
     }
+
+    public function showPerson(Person $person){
+        return view('pages.single', compact('person'));
+    }
 }
