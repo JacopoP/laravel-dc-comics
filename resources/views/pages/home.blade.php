@@ -7,6 +7,8 @@
             <li>
                 <a href="{{route('person.show', $person)}}">{{$person->firstName}} {{$person->lastName}}</a>
                 &nbsp;
+                <a href="{{route('person.edit', $person)}}">Edit</a>
+                &nbsp;
                 <a href="{{route('person.delete', $person)}}">X</a>
             </li>
         @endforeach

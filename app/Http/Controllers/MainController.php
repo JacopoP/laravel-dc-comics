@@ -40,4 +40,23 @@ class MainController extends Controller
         $person->delete();
         return redirect()->route('home');
     }
+
+    public function editPerson(Person $person){
+        return view('pages.edit_form', compact('person'));
+    }
+
+    public function changePerson(Request $request, Person $person){
+        $data = $request->validate([
+            'firstName' => 'required|string|max:32',
+            'lastName' => 'required|string|max:32',
+            'dateOfBirth' => 'required|date|before_or_equal:today',
+            'height' => 'nullable|integer|max:300|gte:20',
+        ]);
+        $person->firstName=$data['firstName'];
+        $person->lastName=$data['lastName'];
+        $person->dateOfBirth=$data['dateOfBirth'];
+        $person->height=$data['height'];
+        $person -> save();
+        return redirect()->route('home');
+    }
 }

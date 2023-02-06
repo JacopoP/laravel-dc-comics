@@ -17,3 +17,9 @@ Route::post('/person/save', [MainController::class, 'savePerson'])
 
 Route::get('/person/delete/{person}', [MainController::class, 'deletePerson'])
 ->name('person.delete');
+
+Route::get('/person/edit/{person}', [MainController::class, 'editPerson'])
+->name('person.edit');
+
+Route::post('/person/change/{person}', [MainController::class, 'changePerson'])
+->name('person.change');
