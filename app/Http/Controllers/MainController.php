@@ -21,7 +21,12 @@ class MainController extends Controller
     }
 
     public function savePerson(Request $request){
-        $data = $request->all();
+        $data = $request->validate([
+            'firstName' => 'required|string|max:32',
+            'lastName' => 'required|string|max:32',
+            'dateOfBirth' => 'required|date|before_or_equal:today',
+            'height' => 'nullable|integer|max:300|gte:20',
+        ]);
         $person = new Person;
         $person->firstName=$data['firstName'];
         $person->lastName=$data['lastName'];
