@@ -1,5 +1,11 @@
 @extends('layouts.main_layout')
 
 @section('content')
-    <h1>ciao</h1>
+    <ul>
+        @foreach ($people as $person)
+            <li>
+                {{$person->firstName}} {{$person->lastName}}
+            </li>
+        @endforeach
+    </ul>
 @endsection
