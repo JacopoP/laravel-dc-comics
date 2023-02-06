@@ -30,4 +30,9 @@ class MainController extends Controller
         $person -> save();
         return redirect()->route('home');
     }
+
+    public function deletePerson(Person $person){
+        $person->delete();
+        return redirect()->route('home');
+    }
 }
