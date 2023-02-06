@@ -15,4 +15,19 @@ class MainController extends Controller
     public function showPerson(Person $person){
         return view('pages.single', compact('person'));
     }
+
+    public function createPerson(){
+        return view('pages.form');
+    }
+
+    public function savePerson(Request $request){
+        $data = $request->all();
+        $person = new Person;
+        $person->firstName=$data['firstName'];
+        $person->lastName=$data['lastName'];
+        $person->dateOfBirth=$data['dateOfBirth'];
+        $person->height=$data['height'];
+        $person -> save();
+        return redirect()->route('home');
+    }
 }
